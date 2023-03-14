@@ -1,9 +1,10 @@
+import Link from 'next/link'
 import Image from "next/image";
 import React, { useState } from "react";
 
 
 export const Header: React.FC = (): JSX.Element => {
-    const [open, setOpen] = useState <boolean>(false)
+  const [open, setOpen] = useState<boolean>(false)
 
   return (
     <>
@@ -18,14 +19,13 @@ export const Header: React.FC = (): JSX.Element => {
           />
           {/* menu */}
           <div>
-            <button>=</button>
             <ul className="flex items-center gap-8 invisible md:visible">
-                <li><a className=" font-bold text-lg font-nunito" href="/">Home</a></li>
-                <li> <a href="/">Menus</a> </li>
-                <li> <a href="/">About</a> </li>
-                <li> <a href="/">Contact</a> </li>
-                <li> <a href="/"><span className="material-symbols-outlined">shopping_cart</span></a> </li>
-                <li> <a href="/"><span className="material-symbols-outlined">account_circle</span></a> </li>
+              <li><Link className=" font-bold text-lg font-nunito" href="/">Home</Link></li>
+              <li> <Link href="/">Menus</Link> </li>
+              <li> <Link href="/">About</Link> </li>
+              <li> <Link href="/">Contact</Link> </li>
+              <li> <Link href="/"><span className="material-symbols-outlined">shopping_cart</span></Link> </li>
+              <li> <Link href="/"><span className="material-symbols-outlined">account_circle</span></Link> </li>
             </ul>
           </div>
         </div>
