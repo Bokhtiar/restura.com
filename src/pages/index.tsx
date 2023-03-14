@@ -1,5 +1,6 @@
 const Home: React.FC = (): JSX.Element => {
-  return <>Home
+  return <>
+  home page
   </>
 };
 
