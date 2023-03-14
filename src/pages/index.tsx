@@ -1,11 +1,10 @@
-import { PrimaryButton } from "@/components/button";
 import Image from "next/image";
-
+import { PrimaryButton } from "@/components/button";
 
 const Home: React.FC = (): JSX.Element => {
   return <>
     <section className="bg-gray-50">
-      <div className="container flex items-center justify-between">
+      <div className="container grid grid-cols-1 md:grid-cols-2 items-center justify-between">
         {/* content */}
         <div>
           {/* heading content */}
