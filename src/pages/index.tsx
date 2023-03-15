@@ -1,10 +1,15 @@
+import Link from 'next/link'
 import Image from "next/image";
-import { PrimaryButton } from "@/components/button";
 import { Header } from "@/layouts/header";
 import { Title } from "@/components/title";
 import { Product } from "@/components/product";
+import { PrimaryButton } from "@/components/button";
+import { useState } from 'react';
 
 const Home: React.FC = (): JSX.Element => {
+
+  const [category, setCategory] = useState<boolean>(false)
+
   return (
     <>
       <Header></Header>
@@ -114,18 +119,87 @@ const Home: React.FC = (): JSX.Element => {
           {/* title */}
           <Title name="Our menus"></Title>
           {/* content */}
-          <p className="text-center text-xl text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys <br /> standard dummy text ever since the 1500s, </p>
+          <p className="text-center text-xl text-gray-600">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys <br /> standard dummy
+            text ever since the 1500s,
+          </p>
           {/* menus */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 my-16">
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
-            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+          <div className="flex items-center justify-between mt-24 mb-4">
+            <div>
+              <span className=" md:px-14 px-4 py-1  border border-primary cursor-pointer text-gray-600 rounded-sm relative" onClick={()=>setCategory(!category)}>All Categories</span>
+              <div className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${category ? " duration-700" : "scale-0 duration-700"}`}>
+                <ul className=''> 
+                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="flex gap-2 items-center">
+              <span className="border border-primary text-gray-500 rounded-sm material-symbols-outlined">
+                list
+              </span>
+              <span className=" border border-primary text-gray-500 rounded-sm material-symbols-outlined">
+                view_cozy
+              </span>
+            </div>
           </div>
+
+          {/* product */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+            <Product
+              name="pizza"
+              price={20}
+              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              image="/images/banner1.png"
+            ></Product>
+          </div>
+
         </div>
       </section>
     </>

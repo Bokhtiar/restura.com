@@ -23,7 +23,7 @@ export const Header: React.FC = (): JSX.Element => {
           </div>
           {/* menu */}
           <div>
-            <ul className={` md:flex items-center gap-8  absolute md:static bg-white md:z-auto w-full top-10 left-0 text-center duration-700  ${open ? 'top-20' : 'top-[-400px] right-9  duration-400'}`}>
+            <ul className={`md:flex items-center gap-8  absolute md:static bg-white w-full top-10 left-0 text-center duration-700  ${open ? 'top-20' : 'top-[-400px] right-9  duration-400'}`}>
               <li><Link className=" font-bold text-lg font-nunito" href="/">Home</Link></li>
               <li> <Link href="/">Menus</Link> </li>
               <li> <Link href="/">About</Link> </li>
