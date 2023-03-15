@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PrimaryButton } from "@/components/button";
 import { Header } from "@/layouts/header";
 import { Title } from "@/components/title";
+import { Product } from "@/components/product";
 
 const Home: React.FC = (): JSX.Element => {
   return (
@@ -115,8 +116,15 @@ const Home: React.FC = (): JSX.Element => {
           {/* content */}
           <p className="text-center text-xl text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys <br /> standard dummy text ever since the 1500s, </p>
           {/* menus */}
-          <div className="gird grid-cols-4 md:grid-cols-4 gap-4">
-            
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 my-16">
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
+            <Product name="pizza" price={20} short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" image="/images/banner1.png"></Product>
           </div>
         </div>
       </section>
