@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PrimaryButton } from "@/components/button";
 import { Header } from "@/layouts/header";
+import { Title } from "@/components/title";
 
 const Home: React.FC = (): JSX.Element => {
   return (
@@ -52,7 +53,7 @@ const Home: React.FC = (): JSX.Element => {
         <Image
           src="/images/banner1.png"
           alt="banner1"
-          className="lg:w-[600px]"
+          className="lg:w-[600px] order-last md:order-first"
           width={550}
           height={0}
         />
@@ -103,6 +104,20 @@ const Home: React.FC = (): JSX.Element => {
 
           {/* button */}
           <PrimaryButton name="Read more"></PrimaryButton>
+        </div>
+      </section>
+
+      {/* our menu */}
+      <section className="bg-gray-50">
+        <div className="container py-7">
+          {/* title */}
+          <Title name="Our menus"></Title>
+          {/* content */}
+          <p className="text-center text-xl text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys <br /> standard dummy text ever since the 1500s, </p>
+          {/* menus */}
+          <div className="gird grid-cols-4 md:grid-cols-4 gap-4">
+            
+          </div>
         </div>
       </section>
     </>
