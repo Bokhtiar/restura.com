@@ -3,10 +3,10 @@ import Link from "next/link";
 export const Sidebar: React.FC = (): JSX.Element => {
   return (
     <>
-      <ul className=" shadow-md">
+      <ul className=" shadow-md ">
         {/* dashboard */}
         <li className=" border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
-          <Link href="/">Dashboard</Link>
+          <Link href="/dashboard">Dashboard</Link>
         </li>
 
         {/* cart */}
@@ -16,7 +16,7 @@ export const Sidebar: React.FC = (): JSX.Element => {
 
         {/* wishlist */}
         <li className=" border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
-          <Link href="/">Wishlist</Link>
+          <Link href="/dashboard/wishlist">Wishlist</Link>
         </li>
 
         {/* order */}
