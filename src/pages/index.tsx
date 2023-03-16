@@ -6,6 +6,7 @@ import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
 import { useState } from "react";
 import { ChooseCard } from "@/components/chooseCard";
+import { Footer } from "@/layouts/footer";
 
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
@@ -348,7 +349,7 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* galley */}
-      <section className="my-24 bg-gray-50 py-12">
+      <section className="mt-24 bg-gray-50 py-12">
         <Title name="Some photos from Our Restaurant"></Title>
         <p className="text-center text-xl text-gray-600">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -422,6 +423,9 @@ const Home: React.FC = (): JSX.Element => {
           />
         </div>
       </section>
+      
+      {/* footer */}
+      <Footer></Footer>
     </>
   );
 };
