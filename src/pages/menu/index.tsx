@@ -14,7 +14,7 @@ const Menu: React.FC = (): JSX.Element => {
       <section className="container grid grid-cols-1 md:grid-cols-5 gap-4">
         {/* sidebar grid */}
         <div className=" col-span-1 shadow-lg p-4">
-            <span className="text-gray-600 text-xl">All Category</span>
+            <span className="text-gray-600 text-md">All Category</span>
             <ul>
                 <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2"> <Link href="" className="">Pizza</Link> </li>
                 <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2"> <Link href="" className="">Pizza</Link> </li>

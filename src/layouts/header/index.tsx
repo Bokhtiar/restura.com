@@ -26,8 +26,8 @@ export const Header: React.FC = (): JSX.Element => {
             <ul className={`md:flex items-center gap-8  absolute md:static bg-white w-full top-10 left-0 text-center duration-700  ${open ? 'top-20' : 'top-[-400px] right-9  duration-400'}`}>
               <li><Link className=" font-bold text-lg font-nunito" href="/">Home</Link></li>
               <li> <Link href="/menu">Menus</Link> </li>
-              <li> <Link href="/">About</Link> </li>
-              <li> <Link href="/">Contact</Link> </li>
+              <li> <Link href="/about">About</Link> </li>
+              <li> <Link href="/contact">Contact</Link> </li>
               <li> <Link href="/"><span className="material-symbols-outlined">shopping_cart</span></Link> </li>
               <li> <Link href="/"><span className="material-symbols-outlined">account_circle</span></Link> </li>
             </ul>
