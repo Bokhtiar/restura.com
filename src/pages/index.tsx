@@ -1,3 +1,5 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -5,8 +7,7 @@ import { Title } from "@/components/title";
 import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
 import { ChooseCard } from "@/components/chooseCard";
-import AOS from "aos";
-import "aos/dist/aos.css";
+
 
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
