@@ -5,7 +5,7 @@ export const BreadCrumbs: React.FC<IBreadCrumbs> = (
 ): JSX.Element => {
   return (
     <>
-      <section className="container flex items-center ">
+      <section className="container flex items-center">
         <span className=" py-2 material-symbols-outlined">home</span>
         <span className="material-symbols-outlined">chevron_right</span>
         <span className={`${props.title2 ? 'text-gray-400' : 'text-primary'}`} >{props.title1}</span>
