@@ -1,12 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Header } from "@/layouts/header";
+import { useState } from "react";
 import { Title } from "@/components/title";
 import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
-import { useState } from "react";
 import { ChooseCard } from "@/components/chooseCard";
-import { Footer } from "@/layouts/footer";
+
 
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
@@ -141,7 +140,7 @@ const Home: React.FC = (): JSX.Element => {
             text ever since the 1500s,
           </p>
           {/* menus */}
-          <div className="flex items-center justify-between mt-24 mb-4">
+          <div className="flex items-center justify-between mt-48 mb-4">
             <div>
               <span
                 className=" md:px-14 px-4 py-1  border border-primary cursor-pointer text-gray-600 rounded-sm relative"
@@ -352,7 +351,7 @@ const Home: React.FC = (): JSX.Element => {
           text ever since the 1500s,
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1 mt-28 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1 mt-48 mb-8">
           <Image
             src="/images/gallery-1.jpg"
             alt="banner1"
