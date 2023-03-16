@@ -29,7 +29,7 @@ export const Header: React.FC = (): JSX.Element => {
               <li> <Link href="/about">About</Link> </li>
               <li> <Link href="/contact">Contact</Link> </li>
               <li> <Link href="/"><span className="material-symbols-outlined">shopping_cart</span></Link> </li>
-              <li> <Link href="/"><span className="material-symbols-outlined">account_circle</span></Link> </li>
+              <li> <Link href="/dashboard"><span className="material-symbols-outlined">account_circle</span></Link> </li>
             </ul>
           </div>
         </div>
