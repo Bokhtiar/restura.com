@@ -8,7 +8,7 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
       <Image
         src={props.image}
         alt="banner1"
-        className="mx-auto py-2"
+        className="mx-auto py-2 px-2"
         width={250}
         height={0}
       />
