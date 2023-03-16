@@ -122,7 +122,7 @@ const Home: React.FC = (): JSX.Element => {
           industry. Lorem Ipsum has been the industrys <br /> standard dummy
           text ever since the 1500s,
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 my-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 my-28">
           <ChooseCard></ChooseCard>
           <ChooseCard></ChooseCard>
           <ChooseCard></ChooseCard>
@@ -131,7 +131,7 @@ const Home: React.FC = (): JSX.Element => {
 
       {/* our menu */}
       <section className="bg-gray-50">
-        <div className="container py-7">
+        <div className="container py-20">
           {/* title */}
           <Title name="Our menus"></Title>
           {/* content */}
@@ -349,7 +349,7 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* galley */}
-      <section className="mt-24 bg-gray-50 py-12">
+      <section className="mt-24 bg-gray-50 py-20">
         <Title name="Some photos from Our Restaurant"></Title>
         <p className="text-center text-xl text-gray-600">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -357,7 +357,7 @@ const Home: React.FC = (): JSX.Element => {
           text ever since the 1500s,
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1 my-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1 mt-28 mb-8">
           <Image
             src="/images/gallery-1.jpg"
             alt="banner1"
