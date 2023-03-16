@@ -45,7 +45,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     Laptop
                                 </td>
                                 <td className="px-6 py-4">
-                                    $2999
+                                    2999
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
@@ -62,7 +62,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     Laptop PC
                                 </td>
                                 <td className="px-6 py-4">
-                                    $1999
+                                    1999
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
@@ -79,7 +79,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     Accessories
                                 </td>
                                 <td className="px-6 py-4">
-                                    $99
+                                    99
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
@@ -96,7 +96,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     Phone
                                 </td>
                                 <td className="px-6 py-4">
-                                    $799
+                                    799
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
@@ -113,7 +113,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     Wearables
                                 </td>
                                 <td className="px-6 py-4">
-                                    $999
+                                    999
                                 </td>
                                 <td className="px-6 py-4">
                                     <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
