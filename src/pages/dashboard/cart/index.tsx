@@ -1,5 +1,6 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
 import { Sidebar } from "@/components/sidebar"
+import Link from "next/link"
 
 const Cart : React.FC = ():JSX.Element => {
     return <>
@@ -9,7 +10,6 @@ const Cart : React.FC = ():JSX.Element => {
             <div className=" col-span-1">
                 <Sidebar />
             </div>
-
             {/* content */}
             <div className="col-span-4">
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -48,7 +48,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     $2999
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                                 </td>
                             </tr>
                             <tr className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -65,7 +65,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     $1999
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                                 </td>
                             </tr>
                             <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
@@ -82,7 +82,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     $99
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                                 </td>
                             </tr>
                             <tr className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
@@ -99,7 +99,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     $799
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <Link href="/" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                                 </td>
                             </tr>
                             <tr>
@@ -116,7 +116,7 @@ const Cart : React.FC = ():JSX.Element => {
                                     $999
                                 </td>
                                 <td className="px-6 py-4">
-                                    <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                    <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
                                 </td>
                             </tr>
                         </tbody>
