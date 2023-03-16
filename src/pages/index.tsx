@@ -1,15 +1,14 @@
-import Link from 'next/link'
+import Link from "next/link";
 import Image from "next/image";
 import { Header } from "@/layouts/header";
 import { Title } from "@/components/title";
 import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
-import { useState } from 'react';
-import { ChooseCard } from '@/components/chooseCard';
+import { useState } from "react";
+import { ChooseCard } from "@/components/chooseCard";
 
 const Home: React.FC = (): JSX.Element => {
-
-  const [category, setCategory] = useState<boolean>(false)
+  const [category, setCategory] = useState<boolean>(false);
 
   return (
     <>
@@ -115,17 +114,17 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* why chose our resturent */}
-      <section className='container my-24'>
-        <Title name='Why Choose Our Restaurant'></Title>
+      <section className="container my-24">
+        <Title name="Why Choose Our Restaurant"></Title>
         <p className="text-center text-xl text-gray-600">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys <br /> standard dummy
-            text ever since the 1500s,
-          </p>
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-10 my-16'>
-        <ChooseCard></ChooseCard>
-        <ChooseCard></ChooseCard>
-        <ChooseCard></ChooseCard>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industrys <br /> standard dummy
+          text ever since the 1500s,
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 my-16">
+          <ChooseCard></ChooseCard>
+          <ChooseCard></ChooseCard>
+          <ChooseCard></ChooseCard>
         </div>
       </section>
 
@@ -143,14 +142,33 @@ const Home: React.FC = (): JSX.Element => {
           {/* menus */}
           <div className="flex items-center justify-between mt-24 mb-4">
             <div>
-              <span className=" md:px-14 px-4 py-1  border border-primary cursor-pointer text-gray-600 rounded-sm relative" onClick={()=>setCategory(!category)}>All Categories</span>
-              <div className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${category ? " duration-700" : "scale-0 duration-700"}`}>
-                <ul className=''> 
-                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
-                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
-                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
-                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
-                  <li className='border border-dotted py-1 text-gray-600 my-1 px-2'><Link href="">Pizza</Link></li>
+              <span
+                className=" md:px-14 px-4 py-1  border border-primary cursor-pointer text-gray-600 rounded-sm relative"
+                onClick={() => setCategory(!category)}
+              >
+                All Categories
+              </span>
+              <div
+                className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${
+                  category ? " duration-700" : "scale-0 duration-700"
+                }`}
+              >
+                <ul className="">
+                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
+                    <Link href="">Pizza</Link>
+                  </li>
+                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
+                    <Link href="">Pizza</Link>
+                  </li>
+                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
+                    <Link href="">Pizza</Link>
+                  </li>
+                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
+                    <Link href="">Pizza</Link>
+                  </li>
+                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
+                    <Link href="">Pizza</Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -215,11 +233,195 @@ const Home: React.FC = (): JSX.Element => {
               image="/images/banner1.png"
             ></Product>
           </div>
-
         </div>
       </section>
 
+      {/* table book */}
+      <section className="container my-24">
+        <Title name="Book a table"></Title>
+        <p className="text-center text-xl text-gray-600">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industrys <br /> standard dummy
+          text ever since the 1500s,
+        </p>
 
+        <div className="my-16 shadow-lg rounded-md">
+          <form action="" className="md:p-24 py-7 px-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {/* name */}
+              <div className=" col-span-1">
+                <label htmlFor="" className="text-gray-600">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  placeholder="name"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* email */}
+              <div>
+                <label htmlFor="" className="text-gray-600">
+                  E-mail
+                </label>
+                <input
+                  type="email"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  placeholder="e-mail"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* phone */}
+              <div>
+                <label htmlFor="" className="text-gray-600">
+                  Phone
+                </label>
+                <input
+                  type="number"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  placeholder="phone"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* Date */}
+              <div>
+                <label htmlFor="" className="text-gray-600">
+                  Date
+                </label>
+                <input
+                  type="date"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* time */}
+              <div>
+                <label htmlFor="" className="text-gray-600">
+                  Time
+                </label>
+                <input
+                  type="time"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* people */}
+              <div>
+                <label htmlFor="" className="text-gray-600">
+                  People
+                </label>
+                <input
+                  type="number"
+                  className=" border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  placeholder="number of people"
+                  name=""
+                  id=""
+                />
+              </div>
+
+              {/* Message */}
+              <div className=" md:col-span-3">
+                <label htmlFor="" className="text-gray-600">
+                  Message
+                </label>
+                <textarea
+                  name=""
+                  className="border border-gray-400 rounded-md py-3 outline-0 w-full hover:border-primary px-3"
+                  placeholder="Message"
+                  id=""
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      {/* galley */}
+      <section className="my-24 bg-gray-50 py-12">
+        <Title name="Some photos from Our Restaurant"></Title>
+        <p className="text-center text-xl text-gray-600">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industrys <br /> standard dummy
+          text ever since the 1500s,
+        </p>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-1 px-1 my-16">
+          <Image
+            src="/images/gallery-1.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-2.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-3.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-4.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-5.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-6.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-7.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+
+          <Image
+            src="/images/gallery-8.jpg"
+            alt="banner1"
+            className=""
+            width={550}
+            height={0}
+          />
+        </div>
+      </section>
     </>
   );
 };
