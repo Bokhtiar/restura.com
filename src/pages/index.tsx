@@ -26,11 +26,11 @@ const Home: React.FC = (): JSX.Element => {
           <div>
             {/* heading content */}
             <p className="leading-10 pt-10 md:pt-0">
-              <span className="md:text-5xl xl:text-7xl text-4xl font-bold text-blue-400">
+              <span className="md:text-6xl xxl:text-7xl text-4xl font-bold text-blue-400">
                 Make Healthy Life
               </span>
               <br />
-              <span className="md:text-5xl xl:text-7xl text-4xl font-bold">
+              <span className="md:text-6xl xxl:text-7xl text-4xl font-bold">
                 With Fitbitesmeal
               </span>
             </p>

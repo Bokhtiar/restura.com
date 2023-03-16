@@ -7,7 +7,7 @@ const Home: React.FC = (): JSX.Element => {
     <>
       <BreadCrumbs title1="Dashboard"></BreadCrumbs>
 
-      <section className="container grid grid-cols-1 md:grid-cols-5 gap-4 md:h-[600px]">
+      <section className="container grid grid-cols-1 md:grid-cols-5 gap-4 md:h-[600px] bg-gray-50 p-6">
         {/* sidebar */}
         <div className=" col-span-1">
           <Sidebar></Sidebar>
