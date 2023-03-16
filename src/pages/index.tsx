@@ -5,6 +5,7 @@ import { Title } from "@/components/title";
 import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
 import { useState } from 'react';
+import { ChooseCard } from '@/components/chooseCard';
 
 const Home: React.FC = (): JSX.Element => {
 
@@ -113,6 +114,21 @@ const Home: React.FC = (): JSX.Element => {
         </div>
       </section>
 
+      {/* why chose our resturent */}
+      <section className='container my-24'>
+        <Title name='Why Choose Our Restaurant'></Title>
+        <p className="text-center text-xl text-gray-600">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industrys <br /> standard dummy
+            text ever since the 1500s,
+          </p>
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-10 my-16'>
+        <ChooseCard></ChooseCard>
+        <ChooseCard></ChooseCard>
+        <ChooseCard></ChooseCard>
+        </div>
+      </section>
+
       {/* our menu */}
       <section className="bg-gray-50">
         <div className="container py-7">
@@ -202,6 +218,8 @@ const Home: React.FC = (): JSX.Element => {
 
         </div>
       </section>
+
+
     </>
   );
 };
