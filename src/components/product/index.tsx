@@ -6,7 +6,7 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
     <section className=" shadow-lg rounded-xl">
       {/* image */}
       <Image
-        src="/images/banner1.png"
+        src={props.image}
         alt="banner1"
         className="mx-auto py-2"
         width={250}

@@ -13,29 +13,29 @@ const Home: React.FC = (): JSX.Element => {
 
   return (
     <>
-      <Header></Header>
+    
       {/* banner section */}
       <section className="bg-gray-50">
         <div className="container grid grid-cols-1 md:grid-cols-2 items-center justify-between">
           {/* content */}
           <div>
             {/* heading content */}
-            <p className="leading-10 pt-5">
-              <span className="md:text-5xl text-4xl font-bold text-blue-400">
+            <p className="leading-10 pt-10 md:pt-0">
+              <span className="md:text-5xl xl:text-7xl text-4xl font-bold text-blue-400">
                 Make Healthy Life
               </span>
               <br />
-              <span className="md:text-5xl text-4xl font-bold">
+              <span className="md:text-5xl xl:text-7xl text-4xl font-bold">
                 With Fitbitesmeal
               </span>
             </p>
             {/* body content */}
-            <p className="leading-[0px] my-8">
-              <span className="md:text-3xl text-2xl text-gray-800 ">
+            <p className="leading-[0px] md:my-16 my-8">
+              <span className="md:text-3xl xl:text-4xl text-2xl text-gray-800 ">
                 Delicious meal the way you want,
               </span>
               <br />
-              <span className="md:text-3xl text-2xl text-gray-800">
+              <span className="md:text-3xl text-2xl xl:text-4xl text-gray-800">
                 When you want
               </span>
             </p>
@@ -186,53 +186,48 @@ const Home: React.FC = (): JSX.Element => {
           {/* product */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <Product
-              name="pizza"
+              name="Chiken carry"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-1.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Chicken rule"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-2.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Noodules"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-3.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Vagitable salat"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-4.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Beef vhona"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-5.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Special salat"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
+              image="/images/menu-item-6.png"
             ></Product>
             <Product
-              name="pizza"
+              name="Garlic salat"
               price={20}
               short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/banner1.png"
             ></Product>
-            <Product
-              name="pizza"
-              price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
-            ></Product>
+            
           </div>
         </div>
       </section>
@@ -424,8 +419,6 @@ const Home: React.FC = (): JSX.Element => {
         </div>
       </section>
       
-      {/* footer */}
-      <Footer></Footer>
     </>
   );
 };
