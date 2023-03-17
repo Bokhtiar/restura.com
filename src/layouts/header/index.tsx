@@ -11,12 +11,13 @@ export const Header: React.FC = (): JSX.Element => {
       <section className="bg-white">
         <div className="container flex items-center justify-between py-6">
           {/* logo */}
-          <Image
+          <Link href="/">
+            <Image
             src="/images/logo.png"
             alt="Picture of the author"
             width={150}
             height={50}
-          />
+          /></Link>
           {/* toggle button */}
           <div className='top-[34px] cursor-pointer absolute right-4 md:hidden ' onClick={() => setOpen(!open)}>
             {open ? <span className="material-symbols-outlined">close</span> : <span className="material-symbols-outlined">menu</span>}
@@ -28,7 +29,7 @@ export const Header: React.FC = (): JSX.Element => {
               <li> <Link href="/menu">Menus</Link> </li>
               <li> <Link href="/about">About</Link> </li>
               <li> <Link href="/contact">Contact</Link> </li>
-              <li> <Link href="/"><span className="material-symbols-outlined">shopping_cart</span></Link> </li>
+              <li> <Link href="/dashboard/cart"><span className="material-symbols-outlined">shopping_cart</span></Link> </li>
               <li> <Link href="/dashboard"><span className="material-symbols-outlined">account_circle</span></Link> </li>
             </ul>
           </div>
