@@ -8,7 +8,6 @@ import { Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
 import { ChooseCard } from "@/components/chooseCard";
 
-
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
 
@@ -60,7 +59,11 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* about us */}
-      <section data-aos="zoom-in-up" data-aos-duration="3000" className="container grid grid-cols-1 md:grid-cols-2 my-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className="container grid grid-cols-1 md:grid-cols-2 my-24"
+      >
         {/* about image */}
         <Image
           src="/images/banner1.png"
@@ -120,7 +123,11 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* why chose our resturent */}
-      <section data-aos="zoom-in-up" data-aos-duration="3000" className="container my-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className="container my-24"
+      >
         <Title name="Why Choose Our Restaurant"></Title>
         <p className="text-center text-xl text-gray-600">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -135,7 +142,11 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* our menu */}
-      <section data-aos="zoom-in-up" data-aos-duration="3000" className="bg-gray-50">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className="bg-gray-50"
+      >
         <div className="container py-20">
           {/* title */}
           <Title name="Our menus"></Title>
@@ -237,7 +248,11 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* table book */}
-      <section data-aos="zoom-in-up" data-aos-duration="3000" className="container my-24">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className="container my-24"
+      >
         <Title name="Book a table"></Title>
         <p className="text-center text-xl text-gray-600">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -348,7 +363,11 @@ const Home: React.FC = (): JSX.Element => {
       </section>
 
       {/* galley */}
-      <section data-aos="zoom-in-up" data-aos-duration="3000" className="mt-24 bg-gray-50 py-20">
+      <section
+        data-aos="zoom-in-up"
+        data-aos-duration="3000"
+        className="mt-24 bg-gray-50 py-20"
+      >
         <Title name="Some photos from Our Restaurant"></Title>
         <p className="text-center text-xl text-gray-600">
           Lorem Ipsum is simply dummy text of the printing and typesetting

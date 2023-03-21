@@ -156,7 +156,7 @@ const ProductShow: React.FC = (): JSX.Element => {
       </section>
       {/* product description */}
       <section className="container">
-        <p className="text-justify text-gray-600 my-5">
+        <p className="text-justify text-gray-600 my-10 md:w-[750px]">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry Lorem Ipsum is simply dummy text of the printing and
           typesetting industry Lorem Ipsum is simply dummy text of the printing
@@ -170,7 +170,7 @@ const ProductShow: React.FC = (): JSX.Element => {
       </section>
 
       {/* releted product */}
-      <div className="container mt-10">
+      <div className="container mt-10 my-5">
         <h2 className="text-center text-xl text-primary py-4">
           As Like your product
         </h2>
