@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { IProduct } from "../../types/product.type";
 
 export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
@@ -14,7 +15,9 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
       />
       <div className="px-4">
         {/* content */}
-        <h2 className="text-center text-2xl text-gray-600">{props.name}</h2>
+        <h2 className="text-center text-2xl text-gray-600">
+          <Link href={`/menu/${1}`}>{props.name}</Link>
+        </h2>
         <p className="text-[12px] text-justify leading-[14px]  text-gray-500 ">
           {props.short_description}
         </p>
