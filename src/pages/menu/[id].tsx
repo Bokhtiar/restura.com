@@ -39,7 +39,7 @@ const ProductShow: React.FC = (): JSX.Element => {
       <BreadCrumbs title1="Product show" title2="Chiken"></BreadCrumbs>
 
       {/* main content */}
-      <section className="container grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+      <section  className="container grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
         {/* image */}
         <div>
           <img className="mx-auto w-[400px] h-[300px]" src={show?.image} alt="" />
@@ -122,7 +122,7 @@ const ProductShow: React.FC = (): JSX.Element => {
             <h2 className="text-gray-600">Ingredient</h2>
             <div className="flex gap-2">
              {show?.ingredient?.map((d, i)=> {
-               return <> <img key={i} className="h-12 w-12 rounded-full" src={d.icon} alt="" /> </>
+               return <img key={i} className="h-12 w-12 rounded-full" src={d.icon} alt="" />
              })}
             </div>
           </div>

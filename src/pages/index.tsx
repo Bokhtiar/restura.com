@@ -2,19 +2,38 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { Title } from "@/components/title";
-import { Product } from "@/components/product";
+import { useCallback, useEffect, useState } from "react";
+import { LoadingProduct, Product } from "@/components/product";
 import { PrimaryButton } from "@/components/button";
 import { ChooseCard } from "@/components/chooseCard";
+import { IProduct } from "@/types/product.type";
+import { Menus } from "@/network/menu.network";
+
 
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [product, setProduct] = useState<IProduct[] | []>([]);
+
+  /* fetchDataProduct */
+  const fetchDataProduct = useCallback(async () => {
+    try {
+      const response = await Menus()
+      if (response && response.status === 200) {
+        setProduct(response.data?.data)
+        setIsLoading(true)
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+  }, [])
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
-  }, []);
+    fetchDataProduct()
+  }, [fetchDataProduct()]);
 
   return (
     <>
@@ -166,9 +185,8 @@ const Home: React.FC = (): JSX.Element => {
                 All Categories
               </span>
               <div
-                className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${
-                  category ? " duration-700" : "scale-0 duration-700"
-                }`}
+                className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${category ? " duration-700" : "scale-0 duration-700"
+                  }`}
               >
                 <ul className="">
                   <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
@@ -201,48 +219,24 @@ const Home: React.FC = (): JSX.Element => {
 
           {/* product */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-            <Product
-              name="Chiken carry"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-1.png"
-            ></Product>
-            <Product
-              name="Chicken rule"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-2.png"
-            ></Product>
-            <Product
-              name="Noodules"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-3.png"
-            ></Product>
-            <Product
-              name="Vagitable salat"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-4.png"
-            ></Product>
-            <Product
-              name="Beef vhona"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-5.png"
-            ></Product>
-            <Product
-              name="Special salat"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/menu-item-6.png"
-            ></Product>
-            <Product
-              name="Garlic salat"
-              price={20}
-              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-              image="/images/banner1.png"
-            ></Product>
+            {
+              isLoading ? <>
+              {
+                product.map((p, i) => {
+                  return <Product key={i} {...p} ></Product>
+                })
+              }
+              </> : <>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              </>
+            }
+       
           </div>
         </div>
       </section>
