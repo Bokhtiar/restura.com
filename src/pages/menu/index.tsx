@@ -1,7 +1,9 @@
 import { BreadCrumbs } from "@/components/breadCrumbs";
 import { LoadingProduct, Product } from "@/components/product";
 import { Title } from "@/components/title";
+import { categoryList } from "@/network/category.network";
 import { Menus } from "@/network/menu.network";
+import { ICategory } from "@/types/category.type";
 import { IProduct } from "@/types/product.type";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,10 +12,10 @@ import { useCallback, useEffect, useState } from "react";
 const Menu: React.FC = (): JSX.Element => {
   const [col, setCol] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(true);
-  const [category, setCategory] = useState<boolean>(false);
+  const [category, setCategory] = useState<ICategory[] | null>([]);
   const [product, setProduct] = useState<IProduct[] | []>([]);
 
-  /* fetchData */
+  /* fetchData menus */
   const fetchData = useCallback(async () => {
     setLoading(false);
     const response = await Menus();
@@ -24,10 +26,23 @@ const Menu: React.FC = (): JSX.Element => {
     }
   }, []);
 
+  /* fetchData category */
+  const fetchDataCategory = useCallback(async()=> {
+    try {
+      const response = await categoryList();
+      if(response && response.status === 200){
+        setCategory(response.data.data)
+      }
+    } catch (error:any) {
+      console.log(error);
+    }
+  },[])
+
   /* useEffect */
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+    fetchDataCategory()
+  }, [fetchData, fetchDataCategory]);
 
   return (
     <>
@@ -38,125 +53,19 @@ const Menu: React.FC = (): JSX.Element => {
         <div className="col-span-1 shadow-lg p-4">
           <span className="text-gray-600 text-md">All Category</span>
           <ul>
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+          {
+            category?.map((cat, i) => {
+              return  <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
               <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
+                <img src={cat.icon} className="h-6 w-6 rounded-full" alt="" />
                 <Link href="" className="">
-                  Pizza
+                  {cat.name}
                 </Link>
               </div>
               <span className="material-symbols-outlined">chevron_right</span>
             </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-
-            <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <Image
-                  src="/images/menu-item-1.png"
-                  alt="Picture of the author"
-                  width={25}
-                  height={20}
-                />
-                <Link href="" className="">
-                  Pizza
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
+            })
+          }
           </ul>
         </div>
 

@@ -2,9 +2,38 @@ import { BreadCrumbs } from "@/components/breadCrumbs";
 import { CartButton, PrimaryButton } from "@/components/button";
 import { Product } from "@/components/product";
 import { Title } from "@/components/title";
+import { menuShow } from "@/network/menu.network";
 import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { IProduct } from "@/types/product.type";
+import { IncomingMessage } from "http";
 
 const ProductShow: React.FC = (): JSX.Element => {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
+  
+  const [show, setShow] = useState<IProduct | null>()
+
+  /* Menu Show fetch Data */
+  const menuShowFetchData = useCallback(async()=> {
+    try {
+      const response = await menuShow(id);
+      if(response && response.status){
+        console.log("ss",response.data.data);
+        setShow(response.data?.data[0])
+      }
+    } catch (error:any) {
+      console.log(error);
+    }
+  },[])
+
+  /* useEffect */
+  useEffect(()=> {
+    menuShowFetchData()
+  },[menuShowFetchData])
+
   return (
     <>
       {/* breadCrumbs */}
@@ -14,21 +43,15 @@ const ProductShow: React.FC = (): JSX.Element => {
       <section className="container grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
         {/* image */}
         <div>
-          <Image
-            src="/images/menu-item-1.png"
-            alt="Picture of the author"
-            className="mx-auto"
-            width={500}
-            height={200}
-          />
+          <img className="mx-auto w-[400px] h-[300px]" src={show?.image} alt="" />
         </div>
 
         {/* container */}
         <div className="">
           {/* product name */}
           <div className="flex justify-between items-center w-96">
-            <h2 className="text-gray-600 text-2xl">Chicken chille souch</h2>
-            <h2 className="text-xl text-gray-500">300Tk</h2>
+            <h2 className="text-gray-600 text-2xl">{show?.name}</h2>
+            <h2 className="text-xl text-gray-500">{show?.price} Tk</h2>
           </div>
 
           {/* review */}
@@ -88,49 +111,27 @@ const ProductShow: React.FC = (): JSX.Element => {
           {/* category */}
           <div className=" my-5 flex gap-3">
             <h2 className="text-gray-600">Category:</h2>
-            <span className="text-gray-500">Chiken</span>
+            <span className="text-gray-500">{show?.category?.name}</span>
           </div>
 
           {/* short description */}
           <p className="text-justify w-96 text-gray-600">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry
+            {show?.description}
           </p>
           {/* ingredient */}
           <div className=" my-5">
             <h2 className="text-gray-600">Ingredient</h2>
             <div className="flex gap-2">
-              <Image
-                src="/images/menu-item-1.png"
-                alt="Picture of the author"
-                className=""
-                width={50}
-                height={50}
-              />
-
-              <Image
-                src="/images/menu-item-1.png"
-                alt="Picture of the author"
-                className=""
-                width={50}
-                height={50}
-              />
-
-              <Image
-                src="/images/menu-item-1.png"
-                alt="Picture of the author"
-                className=""
-                width={50}
-                height={50}
-              />
+             {show?.ingredient?.map((d, i)=> {
+               return <> <img className="h-12 w-12 rounded-full" src={d.icon} alt="" /> </>
+             })}
             </div>
           </div>
 
           {/* cooking time */}
           <div className=" my-5 flex gap-3">
             <h2 className="text-gray-600">Cooking time:</h2>
-            <span className="text-gray-500">1Hourse</span>
+            <span className="text-gray-500">{show?.cooking_time}</span>
           </div>
 
           {/* quantity */}
@@ -157,15 +158,7 @@ const ProductShow: React.FC = (): JSX.Element => {
       {/* product description */}
       <section className="container">
         <p className="text-justify text-gray-600 my-10 md:w-[750px]">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry Lorem Ipsum is simply dummy text of the printing
-          and typesetting industry Lorem Ipsum is simply dummy text of the
-          printing and typesetting industry Lorem Ipsum is simply dummy text of
-          the printing and typesetting industry Lorem Ipsum is simply dummy text
-          of the printing and typesetting industry Lorem Ipsum is simply dummy
-          text of the printing and typesetting industry Lorem Ipsum is simply
-          dummy text of the printing and typesetting industry
+          {show?.description}
         </p>
       </section>
 
@@ -182,43 +175,43 @@ const ProductShow: React.FC = (): JSX.Element => {
           <Product
             name="Chiken carry"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-1.png"
           ></Product>
           <Product
             name="Chicken rule"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-2.png"
           ></Product>
           <Product
             name="Noodules"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-3.png"
           ></Product>
           <Product
             name="Vagitable salat"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-4.png"
           ></Product>
           <Product
             name="Beef vhona"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-5.png"
           ></Product>
           <Product
             name="Special salat"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/menu-item-6.png"
           ></Product>
           <Product
             name="Garlic salat"
             price={20}
-            short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
             image="/images/banner1.png"
           ></Product>
         </div>
