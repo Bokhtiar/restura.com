@@ -1,20 +1,18 @@
-import { BreadCrumbs } from "@/components/breadCrumbs";
-import { CartButton, PrimaryButton } from "@/components/button";
-import { Product } from "@/components/product";
-import { Title } from "@/components/title";
-import { menuShow } from "@/network/menu.network";
-import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { Product } from "@/components/product";
 import { IProduct } from "@/types/product.type";
-import { IncomingMessage } from "http";
+import { menuShow } from "@/network/menu.network";
+import { BreadCrumbs } from "@/components/breadCrumbs";
+import { useCallback, useEffect, useState } from "react";
+import { CartButton} from "@/components/button";
+import { ICategory } from "@/types/category.type";
 
 const ProductShow: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
   
   const [show, setShow] = useState<IProduct | null>()
-
+  
   /* Menu Show fetch Data */
   const menuShowFetchData = useCallback(async()=> {
     try {

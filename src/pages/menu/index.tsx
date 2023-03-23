@@ -25,16 +25,18 @@ const Menu: React.FC = (): JSX.Element => {
   }, []);
 
   /* fetchData category */
-  const fetchDataCategory = useCallback(async()=> {
+  const fetchDataCategory = useCallback(async () => {
     try {
+      setLoading(false)
       const response = await categoryList();
-      if(response && response.status === 200){
+      if (response && response.status === 200) {
         setCategory(response.data.data)
+        setLoading(true)
       }
-    } catch (error:any) {
+    } catch (error: any) {
       console.log(error);
     }
-  },[])
+  }, [])
 
   /* useEffect */
   useEffect(() => {
@@ -51,19 +53,50 @@ const Menu: React.FC = (): JSX.Element => {
         <div className="col-span-1 shadow-lg p-4">
           <span className="text-gray-600 text-md">All Category</span>
           <ul>
-          {
-            category?.map((cat, i) => {
-              return  <li key={i} className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
-              <div className="flex gap-2">
-                <img src={cat.icon} className="h-6 w-6 rounded-full" alt="" />
-                <Link href="" className="">
-                  {cat.name}
-                </Link>
-              </div>
-              <span className="material-symbols-outlined">chevron_right</span>
-            </li>
-            })
-          }
+            {
+              isLoading ? <>
+                {
+                  category?.map((cat, i) => {
+                    return <li key={i} className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+                      <div className="flex gap-2">
+                        <img src={cat.icon} className="h-6 w-6 rounded-full" alt="" />
+                        <Link href="" className="">
+                          {cat.name}
+                        </Link>
+                      </div>
+                      <span className="material-symbols-outlined">chevron_right</span>
+                    </li>
+                  })
+                }
+              </> : <>
+                <li className="animate-pulse py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+                  <div className="flex gap-2">
+                    <img src="" className="h-6 w-6 rounded-full bg-slate-200" alt="" />
+                    <Link href="" className="w-24 h-2 bg-slate-200 mt-2 ">
+                    </Link>
+                  </div>
+                  <span className=" text-slate-200 material-symbols-outlined">chevron_right</span>
+                </li>
+
+                <li className="animate-pulse py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+                  <div className="flex gap-2">
+                    <img src="" className="h-6 w-6 rounded-full bg-slate-200" alt="" />
+                    <Link href="" className="w-24 h-2 bg-slate-200 mt-2 ">
+                    </Link>
+                  </div>
+                  <span className=" text-slate-200 material-symbols-outlined">chevron_right</span>
+                </li>
+
+                <li className="animate-pulse py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+                  <div className="flex gap-2">
+                    <img src="" className="h-6 w-6 rounded-full bg-slate-200" alt="" />
+                    <Link href="" className="w-24 h-2 bg-slate-200 mt-2 ">
+                    </Link>
+                  </div>
+                  <span className=" text-slate-200 material-symbols-outlined">chevron_right</span>
+                </li>
+              </>
+            }
           </ul>
         </div>
 
@@ -100,11 +133,9 @@ const Menu: React.FC = (): JSX.Element => {
 
                 {/* product */}
                 <div
-                  className={`grid grid-cols-2 ${
-                    col ? `md:grid-cols-${col}` : "md:grid-cols-4"
-                  } ${
-                    col ? `xxl:grid-cols-${col}` : " xxl:grid-cols-5"
-                  }  gap-4`}
+                  className={`grid grid-cols-2 ${col ? `md:grid-cols-${col}` : "md:grid-cols-4"
+                    } ${col ? `xxl:grid-cols-${col}` : " xxl:grid-cols-5"
+                    }  gap-4`}
                 >
                   {product.map((product, i) => {
                     return <Product key={i} {...product}></Product>;
