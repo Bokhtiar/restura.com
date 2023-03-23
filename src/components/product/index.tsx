@@ -36,13 +36,14 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
 
     <section className=" shadow-lg rounded-xl">
       {/* image */}
-      <Image
+      <img src={props.image} className="w-[250] mx-auto py-2 px-2" alt="" />
+      {/* <Image
         src={props.image}
         alt="banner1"
         className="mx-auto py-2 px-2"
         width={250}
         height={0}
-      />
+      /> */}
       <div className="px-4">
         {/* content */}
         <h2 className="text-center text-xl text-gray-600 flex justify-between">
