@@ -12,7 +12,6 @@ import { IncomingMessage } from "http";
 const ProductShow: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
   
   const [show, setShow] = useState<IProduct | null>()
 
@@ -144,7 +143,7 @@ const ProductShow: React.FC = (): JSX.Element => {
               <span className="border border-gray-400 w-6 text-center">2</span>
               <span className="border border-gray-400  w-6 material-symbols-outlined">
                 add
-              </span>
+              </span> 
             </div>
           </div>
 

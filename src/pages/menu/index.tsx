@@ -1,13 +1,11 @@
-import { BreadCrumbs } from "@/components/breadCrumbs";
-import { LoadingProduct, Product } from "@/components/product";
-import { Title } from "@/components/title";
-import { categoryList } from "@/network/category.network";
-import { Menus } from "@/network/menu.network";
-import { ICategory } from "@/types/category.type";
-import { IProduct } from "@/types/product.type";
-import Image from "next/image";
 import Link from "next/link";
+import { Menus } from "@/network/menu.network";
+import { IProduct } from "@/types/product.type";
+import { ICategory } from "@/types/category.type";
+import { BreadCrumbs } from "@/components/breadCrumbs";
 import { useCallback, useEffect, useState } from "react";
+import { categoryList } from "@/network/category.network";
+import { LoadingProduct, Product } from "@/components/product";
 
 const Menu: React.FC = (): JSX.Element => {
   const [col, setCol] = useState<number>(0);

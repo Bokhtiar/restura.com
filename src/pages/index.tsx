@@ -204,43 +204,43 @@ const Home: React.FC = (): JSX.Element => {
             <Product
               name="Chiken carry"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-1.png"
             ></Product>
             <Product
               name="Chicken rule"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-2.png"
             ></Product>
             <Product
               name="Noodules"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-3.png"
             ></Product>
             <Product
               name="Vagitable salat"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-4.png"
             ></Product>
             <Product
               name="Beef vhona"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-5.png"
             ></Product>
             <Product
               name="Special salat"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/menu-item-6.png"
             ></Product>
             <Product
               name="Garlic salat"
               price={20}
-              short_description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+              description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
               image="/images/banner1.png"
             ></Product>
           </div>
