@@ -70,3 +70,30 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
     </section>
   );
 };
+
+
+export const LoadingProduct:React.FC = ():JSX.Element => {
+  return <>
+  <section className="shadow-lg rounded-xl animate-pulse">
+      {/* image */}
+      <div className=" bg-slate-200 h-32 w-full px-4">
+
+      </div>
+      <div className="px-4 my-3">
+        {/* content */}
+        <h2 className="text-center text-xl text-gray-600 flex justify-between">
+          <Link className="bg-slate-200 h-3 w-32" href={`/menu/${1}`}></Link>
+          <span className="text-[16px] bg-slate-200 h-3 w-12 "></span>
+        </h2>
+        <p className="text-[12px] text-justify leading-[14px]  bg-slate-200 h-7 w-full my-3">
+          
+        </p>
+        {/* footer section */}
+
+        <div className=" my-3 p-[3px] text-gray-600 rounded-md text-center border border-gray-200  hover:duration-700 bg-slate-200 w-full h-4">
+          
+        </div>
+      </div>
+    </section>
+  </>
+}
