@@ -55,7 +55,7 @@ const Menu: React.FC = (): JSX.Element => {
           <ul>
           {
             category?.map((cat, i) => {
-              return  <li className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+              return  <li key={i} className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
               <div className="flex gap-2">
                 <img src={cat.icon} className="h-6 w-6 rounded-full" alt="" />
                 <Link href="" className="">

@@ -123,7 +123,7 @@ const ProductShow: React.FC = (): JSX.Element => {
             <h2 className="text-gray-600">Ingredient</h2>
             <div className="flex gap-2">
              {show?.ingredient?.map((d, i)=> {
-               return <> <img className="h-12 w-12 rounded-full" src={d.icon} alt="" /> </>
+               return <> <img key={i} className="h-12 w-12 rounded-full" src={d.icon} alt="" /> </>
              })}
             </div>
           </div>
