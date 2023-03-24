@@ -1,8 +1,25 @@
+import { cartCreate } from "@/network/cart.network";
 import Image from "next/image";
 import Link from "next/link";
 import { IProduct } from "../../types/product.type";
+import { Toastify } from "../toastify";
 
 export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
+
+  const cartStore = async(id:any) => {
+    try {
+      const response = await cartCreate(id)
+      if(response && response.status === 201){
+        console.log(response);
+        Toastify.Success(response.data.message);
+      }  
+    } catch (error:any) {
+      console.log(error);
+    }
+    
+    
+  }
+
   return (
     // <section className=" shadow-lg rounded-xl">
     //   {/* image */}
@@ -47,7 +64,7 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
         <p className="text-[12px] text-justify leading-[14px]  text-gray-500 ">
           {props.description}
         </p>
-        <div className=" my-3 p-[3px] text-gray-600 rounded-md text-center border border-primary hover:bg-primary hover:text-white hover:duration-700">
+        <div onClick={()=>cartStore(props._id)} className=" cursor-pointer my-3 p-[3px] text-gray-600 rounded-md text-center border border-primary hover:bg-primary hover:text-white hover:duration-700">
           Add to cart
         </div>
       </div>

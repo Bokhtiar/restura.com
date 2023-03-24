@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "@/utils/helper";
 
 const apiUrl = process.env.REACT_APP_API_ENDPOINT || "https://restura.onrender.com";
 
@@ -13,7 +14,11 @@ axios.defaults.headers.post["Content-Type"] =
 const publicRequest = axios.create({
   baseURL: apiUrl,
 });
- 
+
+const privateRequest = axios.create({
+  baseURL: apiUrl,
+})
+
 // Add a request interceptor
 publicRequest.interceptors.request.use(
   async (config: any) => {
@@ -29,4 +34,22 @@ publicRequest.interceptors.request.use(
   }
 );
 
-export {publicRequest}
+privateRequest.interceptors.request.use(
+  async (config: any) => {
+    const token = await getToken();
+    if (config.headers === undefined) {
+      config.headers = {};
+    }
+    if (token) {
+      config.headers["api_key"] = apiKey;
+      config.headers["Authorization"] = "Bearer " + token || "";
+    }
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
+
+export { publicRequest, privateRequest }
