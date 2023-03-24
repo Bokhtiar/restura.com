@@ -9,7 +9,5 @@ export const menuShow = (id:any) => {
 }
 
 export const menuCategory = (category:any) => {
-  console.log("tes",category);
-  
   return publicRequest.get(`/product/api/v1/user/product/category/${category}`)
 }

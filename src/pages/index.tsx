@@ -1,24 +1,18 @@
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Link from "next/link";
 import Image from "next/image";
 import { Title } from "@/components/title";
-import { useCallback, useEffect, useState } from "react";
-import { LoadingProduct, Product } from "@/components/product";
+import { IProduct } from "@/types/product.type";
 import { PrimaryButton } from "@/components/button";
 import { ChooseCard } from "@/components/chooseCard";
-import { IProduct } from "@/types/product.type";
-import { Menus } from "@/network/menu.network";
-import { ICategory } from "@/types/category.type";
-import { categoryList } from "@/network/category.network";
+import { useCallback, useEffect, useState } from "react";
+import { menuCategory, Menus } from "@/network/menu.network";
+import { LoadingProduct, Product } from "@/components/product";
 
 
 const Home: React.FC = (): JSX.Element => {
-  const [category, setCategory] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isLoadingCategory, setIsLoadingCategory] = useState<boolean>(false);
   const [product, setProduct] = useState<IProduct[] | []>([]);
-  const [categoryAll, setCategoryAll] = useState<ICategory[] | []>([]);
 
   /* fetchDataProduct */
   const fetchDataProduct = useCallback(async () => {
@@ -33,25 +27,11 @@ const Home: React.FC = (): JSX.Element => {
     }
   }, [])
 
-  /* Category fetch data */
-  const fetchCategoryData = useCallback(async () => {
-    try {
-      const response = await categoryList()
-      if (response && response.status === 200) {
-        setCategoryAll(response.data.data)
-        setIsLoadingCategory(true)
-      }
-    } catch (error: any) {
-      console.log(error);
-    }
-  }, [])
-
   useEffect(() => {
     AOS.init();
     AOS.refresh();
     fetchDataProduct()
-    fetchCategoryData()
-  }, [fetchDataProduct()]);
+  }, [fetchDataProduct]);
 
   return (
     <>
@@ -195,43 +175,10 @@ const Home: React.FC = (): JSX.Element => {
           </p>
           {/* menus */}
           <div className="flex items-center justify-between mt-48 mb-4">
-            <div>
-              <span
-                className=" md:px-14 px-4 py-1  border border-primary cursor-pointer text-gray-600 rounded-sm relative"
-                onClick={() => setCategory(!category)}
-              >
-                All Categories
-              </span>
-              <div
-                className={`bg-white md:w-[215px] w-[140px] shadow-2xl absolute pt-2 mt-1 px-1 ${category ? " duration-700" : "scale-0 duration-700"
-                  }`}
-              >
-                <ul className="">
-                  {
-                    isLoadingCategory ?
-                      categoryAll.map((cat, i) => {
-                        return <li key={i} className="border border-dotted py-1 text-gray-600 my-3 px-2">
-                          <Link href="">{cat.name}</Link>
-                        </li>
-                      }) : <div className="bg-white"><li className="border border-dotted py-1 bg-slate-200 animate-pulse my-1 px-2">
-                        <Link href="" className="h-3 w-16"></Link>
-                      </li>
-                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-3 px-2">
-                          <Link href="" className="h-3 w-16"></Link>
-                        </li>
-
-                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-3 px-2">
-                          <Link href="" className="h-3 w-16"></Link>
-                        </li>
-
-                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-1 px-2">
-                          <Link href="" className="h-3 w-16"></Link>
-                        </li>
-                      </div>
-                  }
-                </ul>
-              </div>
-            </div>
+            <p
+              className="p-1 text-gray-500 border border-primary rounded-t-sm px-6 cursor-pointer hover:bg-primary hover:text-white">
+              Defult items
+            </p>
             <div className="flex gap-2 items-center">
               <span className="border border-primary text-gray-500 rounded-sm material-symbols-outlined">
                 list
