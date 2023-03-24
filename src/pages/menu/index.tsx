@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Menus } from "@/network/menu.network";
+import { menuCategory, Menus } from "@/network/menu.network";
 import { IProduct } from "@/types/product.type";
 import { ICategory } from "@/types/category.type";
 import { BreadCrumbs } from "@/components/breadCrumbs";
@@ -38,6 +38,16 @@ const Menu: React.FC = (): JSX.Element => {
     }
   }, [])
 
+  /* category releted product */
+  const categoryProduct = async(id:any) => {
+    setLoading(false)
+    const response = await menuCategory(id)
+    if(response && response.status === 200){
+      setProduct(response.data.data)
+      setLoading(true)
+    }
+  } 
+
   /* useEffect */
   useEffect(() => {
     fetchData();
@@ -57,7 +67,7 @@ const Menu: React.FC = (): JSX.Element => {
               isLoading ? <>
                 {
                   category?.map((cat, i) => {
-                    return <li key={i} className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
+                    return <li onClick={()=>categoryProduct(cat._id)} key={i} className="py-2 w-full border  px-3 rounded-md text-gray-500 hover:bg-primary hover:text-white my-2 flex justify-between gap-2">
                       <div className="flex gap-2">
                         <img src={cat.icon} className="h-6 w-6 rounded-full" alt="" />
                         <Link href="" className="">

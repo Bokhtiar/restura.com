@@ -314,9 +314,9 @@ const ProductShow: React.FC = (): JSX.Element => {
       </section>
       {/* product description */}
       <section className="container">
-        <p className="text-justify text-gray-600 my-10 md:w-[750px]">
-          {show?.description}
-        </p>
+        <div className="text-justify text-gray-600 my-10 md:w-[750px]">
+          { isLoading ? show?.description : <p className=" bg-slate-200 h-24 md:w-[700px]"></p> }
+        </div>
       </section>
 
       {/* releted product */}
@@ -331,9 +331,7 @@ const ProductShow: React.FC = (): JSX.Element => {
         >
           {isLoading ? (
             reletedMenu.map((menu, i) => {
-              return (
-                <Product key={i} {...menu}></Product>
-              )
+              return <Product key={i} {...menu}></Product>;
             })
           ) : (
             <>
