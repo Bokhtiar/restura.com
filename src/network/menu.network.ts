@@ -7,3 +7,9 @@ export const Menus = () => {
 export const menuShow = (id:any) => {
   return publicRequest.get(`/product/api/v1/user/product/${id}`)
 }
+
+export const menuCategory = (category:any) => {
+  console.log("tes",category);
+  
+  return publicRequest.get(`/product/api/v1/user/product/category/${category}`)
+}

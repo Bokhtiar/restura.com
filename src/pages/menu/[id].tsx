@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
-import { Product } from "@/components/product";
+import { LoadingProduct, Product } from "@/components/product";
 import { IProduct } from "@/types/product.type";
-import { menuShow } from "@/network/menu.network";
+import { menuCategory, menuShow } from "@/network/menu.network";
 import { BreadCrumbs } from "@/components/breadCrumbs";
 import { useCallback, useEffect, useState } from "react";
 import { CartButton, LoadingButton } from "@/components/button";
@@ -10,23 +10,31 @@ import { ICategory } from "@/types/category.type";
 const ProductShow: React.FC = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [show, setShow] = useState<IProduct | null>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [reletedMenu, setReletedMenu] = useState<IProduct[] | []>([]);
 
   /* Menu Show fetch Data */
   const menuShowFetchData = useCallback(async () => {
     try {
       const response = await menuShow(id);
       if (response && response.status) {
-        console.log("ss", response.data.data);
         setShow(response.data?.data[0]);
+
+        const reletedProductResponse = await menuCategory(
+          response.data.data[0].category._id
+        );
+        if (reletedProductResponse) {
+          console.log(reletedProductResponse.data.data);
+          setReletedMenu(reletedProductResponse.data.data);
+        }
+
         setIsLoading(true);
       }
     } catch (error: any) {
       console.log(error);
     }
-  }, []);
+  }, [id]);
 
   /* useEffect */
   useEffect(() => {
@@ -256,36 +264,51 @@ const ProductShow: React.FC = (): JSX.Element => {
 
           {/* cooking time */}
           <div className=" my-5 flex gap-3">
-            {
-              isLoading ? <>
-              <h2 className="text-gray-600">Cooking time:</h2>
-              <span className="text-gray-500">{show?.cooking_time}</span></> : <p className="bg-slate-200 h-4 w-32 animate-pulse"></p>
-            }
+            {isLoading ? (
+              <>
+                <h2 className="text-gray-600">Cooking time:</h2>
+                <span className="text-gray-500">{show?.cooking_time}</span>
+              </>
+            ) : (
+              <p className="bg-slate-200 h-4 w-32 animate-pulse"></p>
+            )}
           </div>
 
           {/* quantity */}
           <div className="flex my-5 text-gray-500">
-            {isLoading ? <><span className="text-gray-600">Quantity:</span>
-            <div className="flex gap-[1px] px-4">
-              <span className="border border-gray-400  w-6 material-symbols-outlined">
-                remove
-              </span>
-              <span className="border border-gray-400 w-6 text-center">2</span>
-              <span className="border border-gray-400  w-6 material-symbols-outlined">
-                add
-              </span>
-            </div></> : <p className="bg-slate-200 h-6 w-24 animate-pulse"></p>}
-            
+            {isLoading ? (
+              <>
+                <span className="text-gray-600">Quantity:</span>
+                <div className="flex gap-[1px] px-4">
+                  <span className="border border-gray-400  w-6 material-symbols-outlined">
+                    remove
+                  </span>
+                  <span className="border border-gray-400 w-6 text-center">
+                    2
+                  </span>
+                  <span className="border border-gray-400  w-6 material-symbols-outlined">
+                    add
+                  </span>
+                </div>
+              </>
+            ) : (
+              <p className="bg-slate-200 h-6 w-24 animate-pulse"></p>
+            )}
           </div>
 
           {/* button */}
           <div className="flex gap-4">
-            {isLoading ? <>
-            <CartButton name="Add to cart"></CartButton>
-            <CartButton name="Add to wishlisht"></CartButton></> : <>
-            <LoadingButton name=""></LoadingButton>
-            <LoadingButton name=""></LoadingButton>
-            </> }
+            {isLoading ? (
+              <>
+                <CartButton name="Add to cart"></CartButton>
+                <CartButton name="Add to wishlisht"></CartButton>
+              </>
+            ) : (
+              <>
+                <LoadingButton name=""></LoadingButton>
+                <LoadingButton name=""></LoadingButton>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -306,48 +329,23 @@ const ProductShow: React.FC = (): JSX.Element => {
         <div
           className={`grid grid-cols-2 md:grid-cols-6 xxl:grid-cols-5 gap-4`}
         >
-          <Product
-            name="Chiken carry"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-1.png"
-          ></Product>
-          <Product
-            name="Chicken rule"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-2.png"
-          ></Product>
-          <Product
-            name="Noodules"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-3.png"
-          ></Product>
-          <Product
-            name="Vagitable salat"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-4.png"
-          ></Product>
-          <Product
-            name="Beef vhona"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-5.png"
-          ></Product>
-          <Product
-            name="Special salat"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/menu-item-6.png"
-          ></Product>
-          <Product
-            name="Garlic salat"
-            price={20}
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-            image="/images/banner1.png"
-          ></Product>
+          {isLoading ? (
+            reletedMenu.map((menu, i) => {
+              return (
+                <Product key={i} {...menu}></Product>
+              )
+            })
+          ) : (
+            <>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+              <LoadingProduct></LoadingProduct>
+            </>
+          )}
         </div>
       </div>
     </>
