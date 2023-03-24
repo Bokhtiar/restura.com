@@ -9,12 +9,16 @@ import { PrimaryButton } from "@/components/button";
 import { ChooseCard } from "@/components/chooseCard";
 import { IProduct } from "@/types/product.type";
 import { Menus } from "@/network/menu.network";
+import { ICategory } from "@/types/category.type";
+import { categoryList } from "@/network/category.network";
 
 
 const Home: React.FC = (): JSX.Element => {
   const [category, setCategory] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingCategory, setIsLoadingCategory] = useState<boolean>(false);
   const [product, setProduct] = useState<IProduct[] | []>([]);
+  const [categoryAll, setCategoryAll] = useState<ICategory[] | []>([]);
 
   /* fetchDataProduct */
   const fetchDataProduct = useCallback(async () => {
@@ -29,10 +33,24 @@ const Home: React.FC = (): JSX.Element => {
     }
   }, [])
 
+  /* Category fetch data */
+  const fetchCategoryData = useCallback(async () => {
+    try {
+      const response = await categoryList()
+      if (response && response.status === 200) {
+        setCategoryAll(response.data.data)
+        setIsLoadingCategory(true)
+      }
+    } catch (error: any) {
+      console.log(error);
+    }
+  }, [])
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
     fetchDataProduct()
+    fetchCategoryData()
   }, [fetchDataProduct()]);
 
   return (
@@ -189,21 +207,28 @@ const Home: React.FC = (): JSX.Element => {
                   }`}
               >
                 <ul className="">
-                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
-                    <Link href="">Pizza</Link>
-                  </li>
-                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
-                    <Link href="">Pizza</Link>
-                  </li>
-                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
-                    <Link href="">Pizza</Link>
-                  </li>
-                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
-                    <Link href="">Pizza</Link>
-                  </li>
-                  <li className="border border-dotted py-1 text-gray-600 my-1 px-2">
-                    <Link href="">Pizza</Link>
-                  </li>
+                  {
+                    isLoadingCategory ?
+                      categoryAll.map((cat, i) => {
+                        return <li key={i} className="border border-dotted py-1 text-gray-600 my-3 px-2">
+                          <Link href="">{cat.name}</Link>
+                        </li>
+                      }) : <div className="bg-white"><li className="border border-dotted py-1 bg-slate-200 animate-pulse my-1 px-2">
+                        <Link href="" className="h-3 w-16"></Link>
+                      </li>
+                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-3 px-2">
+                          <Link href="" className="h-3 w-16"></Link>
+                        </li>
+
+                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-3 px-2">
+                          <Link href="" className="h-3 w-16"></Link>
+                        </li>
+
+                        <li className="border border-dotted py-1 bg-slate-200 animate-pulse my-1 px-2">
+                          <Link href="" className="h-3 w-16"></Link>
+                        </li>
+                      </div>
+                  }
                 </ul>
               </div>
             </div>
@@ -221,22 +246,22 @@ const Home: React.FC = (): JSX.Element => {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {
               isLoading ? <>
-              {
-                product.map((p, i) => {
-                  return <Product key={i} {...p} ></Product>
-                })
-              }
+                {
+                  product.map((p, i) => {
+                    return <Product key={i} {...p} ></Product>
+                  })
+                }
               </> : <>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
-              <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
+                <LoadingProduct></LoadingProduct>
               </>
             }
-       
+
           </div>
         </div>
       </section>

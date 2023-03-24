@@ -113,7 +113,7 @@ const Menu: React.FC = (): JSX.Element => {
         {/* product grid */}
         {isLoading ? (
           <>
-            <div className=" col-span-4 p-4">
+            <div className=" col-span-4 my-6 md:my-0">
               <div className="">
                 {/* menus */}
                 <div className="flex items-center justify-between mb-4">
@@ -156,7 +156,7 @@ const Menu: React.FC = (): JSX.Element => {
           </>
         ) : (
           <>
-            <section className="col-span-4 p-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <section className="col-span-4 my-6 md:my-0 grid grid-cols-2 md:grid-cols-4 gap-4">
               <LoadingProduct></LoadingProduct>
               <LoadingProduct></LoadingProduct>
               <LoadingProduct></LoadingProduct>
