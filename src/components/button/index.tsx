@@ -13,3 +13,11 @@ export const CartButton: React.FC<IButton> = (props: IButton): JSX.Element => {
         <span className='text-base'>{props.name}</span>
     </button>
 }
+
+/* loading button */
+export const LoadingButton: React.FC<IButton> = (props: IButton): JSX.Element => {
+    return <button className='items-center bg-slate-200 h-8 w-32  border border-gray-400 px-4  rounded-md mx-auto md:mx-0 hover:bg-primary'>
+        <span className='text-base'></span>
+    </button>
+}
+
