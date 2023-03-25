@@ -16,7 +16,7 @@ const authRoute = (Component: any) => {
                 }
             }
             checkToken();
-        }, []);
+        }, [router]);
 
         if (authenticated) {
             return (
