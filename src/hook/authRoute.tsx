@@ -22,7 +22,10 @@ const authRoute = (Component: any) => {
             return (
                 <Component {...props} />
             );
+        } else {
+            return null;
         }
     }
 };
+authRoute.displayName = "authRoute";
 export default authRoute;
