@@ -40,8 +40,8 @@ privateRequest.interceptors.request.use(
     if (config.headers === undefined) {
       config.headers = {};
     }
+    config.headers["api_key"] = apiKey;
     if (token) {
-      config.headers["api_key"] = apiKey;
       config.headers["Authorization"] = "Bearer " + token || "";
     }
     return config;

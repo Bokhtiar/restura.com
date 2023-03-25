@@ -1,6 +1,15 @@
+import { removeToken } from "@/utils/helper";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { Toastify } from "../toastify";
 
 export const Sidebar: React.FC = (): JSX.Element => {
+  const router = useRouter();
+  const logout = async() => {
+    await removeToken()
+    router.push("/");
+    Toastify.Info("Logout successfully done")
+  }
   return (
     <>
       <ul className=" shadow-md ">
@@ -25,8 +34,8 @@ export const Sidebar: React.FC = (): JSX.Element => {
         </li>
 
         {/* Cart */}
-        <li className=" border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
-          <Link href="/">Logout</Link>
+        <li onClick={()=> logout()} className="cursor-pointer border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
+          <span  >Logout</span>
         </li>
       </ul>
     </>
