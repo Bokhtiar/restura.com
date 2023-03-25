@@ -22,8 +22,6 @@ const authRoute = (Component: any) => {
             return (
                 <Component {...props} />
             );
-        } else {
-            return null;
         }
     }
 };
