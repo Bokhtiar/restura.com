@@ -4,6 +4,7 @@ import { ILogin } from "@/types/login.type";
 import { login } from "@/network/auth.network";
 import { setToken } from "@/utils/helper";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const LoginForm : React.FC = ():JSX.Element => {
     const router = useRouter();
@@ -32,7 +33,7 @@ export const LoginForm : React.FC = ():JSX.Element => {
      <section className="flex h-screen bg-gray-50">
       <div className=" my-auto w-96 shadow-lg bg-white mx-auto px-4 rounded-lg py-6">
         <img
-          src="./b.jpg"
+          src="./images/client1.jpg"
           className="h-16 w-16 rounded-full border border-gray-900 p-1 mx-auto"
           alt=""
         />
@@ -66,8 +67,9 @@ export const LoginForm : React.FC = ():JSX.Element => {
           </div>
 
           {/* button */}
-          <div className="text-center">
+          <div className="text-center flex items-center gap-3">
             <PrimaryButton name="Login"></PrimaryButton>
+            <Link href='/register' className="text-gray-500 ">create new account</Link>
           </div>
         </form>
       </div>
