@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from "react"
 const Cart: React.FC = (): JSX.Element => {
 
     const [cart, setCart] = useState<ICart[] | []>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     /* fetchData */
     const fetchData = useCallback(async () => {
@@ -16,6 +17,7 @@ const Cart: React.FC = (): JSX.Element => {
             if (response && response.status === 200) {
                 console.log(response.data.data);
                 setCart(response.data.data)
+                setIsLoading(true)
             }
         } catch (error: any) {
             console.log(error);
@@ -23,41 +25,41 @@ const Cart: React.FC = (): JSX.Element => {
     }, [])
 
     /* decrement */
-    const decrement = async(id:any) => {
+    const decrement = async (id: any) => {
         try {
             const response = await cartDecrement(id)
-            if(response && response.status === 201){
+            if (response && response.status === 201) {
                 fetchData()
                 Toastify.Success(response.data.message);
             }
-        } catch (error:any) {
+        } catch (error: any) {
             console.log(error);
         }
     }
 
     /* increment */
-    const increment = async(id:any) => {
+    const increment = async (id: any) => {
         try {
             const response = await cartIncrement(id)
-            if(response && response.status === 201){
+            if (response && response.status === 201) {
                 fetchData()
                 Toastify.Success(response.data.message);
             }
-        } catch (error:any) {
+        } catch (error: any) {
             console.log(error);
         }
     }
 
     /* cart delete */
-    const cartDestroy = async(id:any) => {
+    const cartDestroy = async (id: any) => {
         try {
-          
+
             const response = await cartDelete(id)
-            if(response && response.status === 200){
+            if (response && response.status === 200) {
                 fetchData()
                 Toastify.Success(response.data.message);
             }
-        } catch (error:any) {
+        } catch (error: any) {
             console.log(error);
         }
     }
@@ -89,32 +91,62 @@ const Cart: React.FC = (): JSX.Element => {
                         </thead>
                         <tbody>
                             {
-                                cart.map((item, i) => {
-                                    return <tr key={i}>
-                                        <td className="text-md px-6 py-4 flex items-center gap-2">
+                                isLoading ?
 
-                                            <img src={item.product[0]?.image} alt="" className="h-16 w-16" />
-                                            <span>{item.product[0]?.name}</span>
-                                        </td>
-                                        <td className="text-md px-6 py-4">
+                                    cart.map((item, i) => {
+                                        return <tr key={i}>
+                                            <td className="text-md px-6 py-4 flex items-center gap-2">
 
-                                            <div className="flex gap-[1px] px-4">
-                                                <span onClick={()=>decrement(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
-                                                    remove
-                                                </span>
-                                                <span className="border border-gray-400 w-6 text-center">
-                                                    {item.quantity}
-                                                </span>
-                                                <span onClick={()=> increment(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
-                                                    add
-                                                </span>
-                                            </div>
-                                        </td>
-                                        <td className="text-md px-6 py-4">{item.product[0]?.price} Tk</td>
-                                        <td className="text-md px-6 py-4">{item.product[0]?.price * item.quantity} Tk</td>
-                                        <td className="text-md px-6 py-4"><span onClick={()=>cartDestroy(item._id)} className=" cursor-pointer text-red-500 material-symbols-outlined">delete</span></td>
-                                    </tr>
-                                })
+                                                <img src={item.product[0]?.image} alt="" className="h-16 w-16" />
+                                                <span>{item.product[0]?.name}</span>
+                                            </td>
+                                            <td className="text-md px-6 py-4">
+
+                                                <div className="flex gap-[1px] px-4">
+                                                    <span onClick={() => decrement(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
+                                                        remove
+                                                    </span>
+                                                    <span className="border border-gray-400 w-6 text-center">
+                                                        {item.quantity}
+                                                    </span>
+                                                    <span onClick={() => increment(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
+                                                        add
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td className="text-md px-6 py-4">{item.product[0]?.price} Tk</td>
+                                            <td className="text-md px-6 py-4">{item.product[0]?.price * item.quantity} Tk</td>
+                                            <td className="text-md px-6 py-4"><span onClick={() => cartDestroy(item._id)} className=" cursor-pointer text-red-500 material-symbols-outlined">delete</span></td>
+                                        </tr>
+                                    }) : <>
+
+                                        <tr className="  my-3">
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                        </tr>
+
+                                        <tr className="  my-3">
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                        </tr>
+
+                                        <tr className="  my-3">
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
+                                        </tr>
+
+                                    </>
+
+
                             }
                         </tbody>
                     </table>
