@@ -15,3 +15,8 @@ export const cartIncrement = (id:any) => {
 export const cartDecrement = (id:any) => {
     return privateRequest.put(`/order/api/v1/cart/decrement/${id}`);
 };
+
+export const cartDelete = (id:any) => {
+    return privateRequest.delete(`/order/api/v1/cart/destroy/${id}`);
+};
+

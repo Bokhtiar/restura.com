@@ -1,7 +1,7 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
 import { Sidebar } from "@/components/sidebar"
 import { Toastify } from "@/components/toastify"
-import { cartDecrement, cartIncrement, cartList } from "@/network/cart.network"
+import { cartDecrement, cartDelete, cartIncrement, cartList } from "@/network/cart.network"
 import { ICart } from "@/types/cart.type"
 import { useCallback, useEffect, useState } from "react"
 
@@ -40,6 +40,20 @@ const Cart: React.FC = (): JSX.Element => {
         try {
             const response = await cartIncrement(id)
             if(response && response.status === 201){
+                fetchData()
+                Toastify.Success(response.data.message);
+            }
+        } catch (error:any) {
+            console.log(error);
+        }
+    }
+
+    /* cart delete */
+    const cartDestroy = async(id:any) => {
+        try {
+          
+            const response = await cartDelete(id)
+            if(response && response.status === 200){
                 fetchData()
                 Toastify.Success(response.data.message);
             }
@@ -98,7 +112,7 @@ const Cart: React.FC = (): JSX.Element => {
                                         </td>
                                         <td className="text-md px-6 py-4">{item.product[0]?.price} Tk</td>
                                         <td className="text-md px-6 py-4">{item.product[0]?.price * item.quantity} Tk</td>
-                                        <td className="text-md px-6 py-4"><span className="text-red-500 material-symbols-outlined">delete</span></td>
+                                        <td className="text-md px-6 py-4"><span onClick={()=>cartDestroy(item._id)} className=" cursor-pointer text-red-500 material-symbols-outlined">delete</span></td>
                                     </tr>
                                 })
                             }
