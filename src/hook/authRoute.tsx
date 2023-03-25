@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const authRoute = (Component: any) => {
+export const authRoute = (Component: any) => {
     return (props: any) => {
         const router = useRouter();
         const [authenticated, setAuthenticated] = useState(false);
@@ -27,5 +27,3 @@ const authRoute = (Component: any) => {
         }
     }
 };
-authRoute.displayName = "authRoute";
-export default authRoute;

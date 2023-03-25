@@ -1,4 +1,4 @@
-import authRoute from "@/hook/authRoute";
+import { authRoute } from "@/hook/authRoute";
 import { removeToken } from "@/utils/helper";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -6,7 +6,7 @@ import { Toastify } from "../toastify";
 
 const Sidebar: React.FC = (): JSX.Element => {
   const router = useRouter();
-  const logout = async() => {
+  const logout = async () => {
     await removeToken()
     router.push("/");
     Toastify.Info("Logout successfully done")
@@ -35,7 +35,7 @@ const Sidebar: React.FC = (): JSX.Element => {
         </li>
 
         {/* Cart */}
-        <li onClick={()=> logout()} className="cursor-pointer border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
+        <li onClick={() => logout()} className="cursor-pointer border border-gray-200 py-3 px-3 rounded-sm hover:bg-primary hover:text-white">
           <span  >Logout</span>
         </li>
       </ul>
