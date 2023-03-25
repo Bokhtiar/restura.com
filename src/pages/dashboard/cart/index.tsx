@@ -1,19 +1,17 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
 import { Sidebar } from "@/components/sidebar"
-import { cartList } from "@/network/cart.network"
+import { Toastify } from "@/components/toastify"
+import { cartDecrement, cartIncrement, cartList } from "@/network/cart.network"
 import { ICart } from "@/types/cart.type"
 import { useCallback, useEffect, useState } from "react"
 
 const Cart: React.FC = (): JSX.Element => {
 
     const [cart, setCart] = useState<ICart[] | []>([])
-    console.log('t', cart);
 
     /* fetchData */
     const fetchData = useCallback(async () => {
         try {
-            console.log('test');
-
             const response = await cartList()
             if (response && response.status === 200) {
                 console.log(response.data.data);
@@ -23,6 +21,32 @@ const Cart: React.FC = (): JSX.Element => {
             console.log(error);
         }
     }, [])
+
+    /* decrement */
+    const decrement = async(id:any) => {
+        try {
+            const response = await cartDecrement(id)
+            if(response && response.status === 201){
+                fetchData()
+                Toastify.Success(response.data.message);
+            }
+        } catch (error:any) {
+            console.log(error);
+        }
+    }
+
+    /* increment */
+    const increment = async(id:any) => {
+        try {
+            const response = await cartIncrement(id)
+            if(response && response.status === 201){
+                fetchData()
+                Toastify.Success(response.data.message);
+            }
+        } catch (error:any) {
+            console.log(error);
+        }
+    }
 
     /* useEffect */
     useEffect(() => {
@@ -61,13 +85,13 @@ const Cart: React.FC = (): JSX.Element => {
                                         <td className="text-md px-6 py-4">
 
                                             <div className="flex gap-[1px] px-4">
-                                                <span className="border border-gray-400  w-6 material-symbols-outlined">
+                                                <span onClick={()=>decrement(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
                                                     remove
                                                 </span>
                                                 <span className="border border-gray-400 w-6 text-center">
-                                                    2
+                                                    {item.quantity}
                                                 </span>
-                                                <span className="border border-gray-400  w-6 material-symbols-outlined">
+                                                <span onClick={()=> increment(item._id)} className=" cursor-pointer border border-gray-400  w-6 material-symbols-outlined">
                                                     add
                                                 </span>
                                             </div>
