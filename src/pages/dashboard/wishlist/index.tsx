@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 import { BreadCrumbs } from "@/components/breadCrumbs"
 
 const Wishlist: React.FC = (): JSX.Element => {

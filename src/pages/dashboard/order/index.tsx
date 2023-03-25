@@ -1,5 +1,5 @@
 import { BreadCrumbs } from "@/components/breadCrumbs";
-import { Sidebar } from "@/components/sidebar";
+import Sidebar from "@/components/sidebar";
 import Link from "next/link";
 
 const Order: React.FC = (): JSX.Element => {

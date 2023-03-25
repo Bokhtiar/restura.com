@@ -1,5 +1,5 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
-import { Sidebar } from "@/components/sidebar"
+import Sidebar from "@/components/sidebar"
 import { Toastify } from "@/components/toastify"
 import { cartDecrement, cartDelete, cartIncrement, cartList } from "@/network/cart.network"
 import { ICart } from "@/types/cart.type"

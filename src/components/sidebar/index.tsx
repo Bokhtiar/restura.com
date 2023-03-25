@@ -1,9 +1,10 @@
+import authRoute from "@/hook/authRoute";
 import { removeToken } from "@/utils/helper";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Toastify } from "../toastify";
 
-export const Sidebar: React.FC = (): JSX.Element => {
+const Sidebar: React.FC = (): JSX.Element => {
   const router = useRouter();
   const logout = async() => {
     await removeToken()
@@ -41,3 +42,5 @@ export const Sidebar: React.FC = (): JSX.Element => {
     </>
   );
 };
+
+export default authRoute(Sidebar)

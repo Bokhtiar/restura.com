@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/sidebar";
+import  Sidebar from "@/components/sidebar";
 import { BreadCrumbs } from "@/components/breadCrumbs";
 import { Card } from "@/components/card";
 
