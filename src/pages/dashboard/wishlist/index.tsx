@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Sidebar from "@/components/sidebar"
 import { BreadCrumbs } from "@/components/breadCrumbs"
+import authRoute from "@/hook/authRoute"
 
 const Wishlist: React.FC = (): JSX.Element => {
     return <>
@@ -51,4 +52,4 @@ const Wishlist: React.FC = (): JSX.Element => {
         </section>
     </>
 }
-export default Wishlist
+export default authRoute(Wishlist)

@@ -1,6 +1,7 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
 import Sidebar from "@/components/sidebar"
 import { Toastify } from "@/components/toastify"
+import authRoute from "@/hook/authRoute"
 import { cartDecrement, cartDelete, cartIncrement, cartList } from "@/network/cart.network"
 import { ICart } from "@/types/cart.type"
 import { useCallback, useEffect, useState } from "react"
@@ -156,4 +157,4 @@ const Cart: React.FC = (): JSX.Element => {
         </section>
     </>
 }
-export default Cart
+export default authRoute(Cart)
