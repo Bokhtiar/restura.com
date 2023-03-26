@@ -1,6 +1,5 @@
 import { BreadCrumbs } from "@/components/breadCrumbs";
 import Sidebar from "@/components/sidebar";
-import authRoute from "@/hook/authRoute";
 import Link from "next/link";
 
 const Order: React.FC = (): JSX.Element => {
@@ -52,4 +51,4 @@ const Order: React.FC = (): JSX.Element => {
         </section>
     </>
 }
-export default authRoute(Order);
+export default Order

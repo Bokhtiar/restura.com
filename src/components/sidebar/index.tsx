@@ -1,8 +1,10 @@
-import authRoute from "@/hook/authRoute";
-import { removeToken } from "@/utils/helper";
+
+import { getToken, removeToken } from "@/utils/helper";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Toastify } from "../toastify";
+
 
 const Sidebar: React.FC = (): JSX.Element => {
   const router = useRouter();
@@ -11,6 +13,13 @@ const Sidebar: React.FC = (): JSX.Element => {
     router.push("/");
     Toastify.Info("Logout successfully done")
   }
+
+  useEffect(() => {
+    const token: any = localStorage.getItem("token");
+    if (!token) {
+      router.replace("/login");
+    }
+  })
   return (
     <>
       <ul className=" shadow-md ">
