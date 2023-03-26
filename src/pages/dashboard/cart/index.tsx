@@ -3,6 +3,7 @@ import Sidebar from "@/components/sidebar"
 import { Toastify } from "@/components/toastify"
 import { cartDecrement, cartDelete, cartIncrement, cartList } from "@/network/cart.network"
 import { ICart } from "@/types/cart.type"
+import Link from "next/link"
 import { useCallback, useEffect, useState } from "react"
 
 const Cart: React.FC = (): JSX.Element => {
@@ -64,7 +65,7 @@ const Cart: React.FC = (): JSX.Element => {
         }
     }
 
-    /* useEffect */ 
+    /* useEffect */
     useEffect(() => {
         fetchData()
     }, [fetchData])
@@ -77,7 +78,12 @@ const Cart: React.FC = (): JSX.Element => {
                 <Sidebar />
             </div>
             {/* content */}
+
             <div className="md:col-span-4">
+                <div className="flex items-center justify-between mb-2">
+                    <span className="font-bold text-2xl">Cart list</span>
+                    <Link className="btn btn-outline bg-primary text-white" href='/dashboard/order/create'>Order create</Link>
+                </div>
                 <div className="shadow-lg overflow-x-auto">
                     <table className="w-full">
                         <thead className="text-left bg-gray-300">
