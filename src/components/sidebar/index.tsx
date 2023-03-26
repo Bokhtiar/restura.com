@@ -1,4 +1,4 @@
-import { authRoute } from "@/hook/authRoute";
+import authRoute from "@/hook/authRoute";
 import { removeToken } from "@/utils/helper";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -43,4 +43,4 @@ const Sidebar: React.FC = (): JSX.Element => {
   );
 };
 
-export default authRoute(Sidebar)
+export default Sidebar

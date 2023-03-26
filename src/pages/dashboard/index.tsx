@@ -1,7 +1,7 @@
 import Sidebar from "@/components/sidebar";
 import { BreadCrumbs } from "@/components/breadCrumbs";
 import { Card } from "@/components/card";
-import {authRoute} from "@/hook/authRoute";
+import authRoute from "@/hook/authRoute";
 
 const Home: React.FC = (): JSX.Element => {
   return (

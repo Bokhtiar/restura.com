@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Sidebar from "@/components/sidebar"
 import { BreadCrumbs } from "@/components/breadCrumbs"
-import {authRoute} from "@/hook/authRoute"
+import authRoute from "@/hook/authRoute"
 
 const Wishlist: React.FC = (): JSX.Element => {
     return <>
