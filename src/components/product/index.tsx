@@ -57,7 +57,7 @@ export const Product: React.FC<IProduct> = (props: IProduct): JSX.Element => {
 
       <div className="px-4">
         {/* content */}
-        <h2 className="text-center text-xl text-gray-600 flex justify-between">
+        <h2 className="text-center md:text-xl text-gray-600 flex justify-between">
           <Link href={`/menu/${props._id}`}>{props.name}</Link>
           <span className="text-[16px]">{props.price}Tk</span>
         </h2>
