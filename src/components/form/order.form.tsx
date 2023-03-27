@@ -99,7 +99,7 @@ export const OrderForm: React.FC = (): JSX.Element => {
             </div>
 
             {/* next page button */}
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <button className="float-right btn btn-outline bg-primary text-white flex items-center gap-1" onClick={() => setNext(!next)}>
                 <span className="material-symbols-outlined">payments</span>
                 <span>Payment</span>

@@ -1,4 +1,5 @@
 import { BreadCrumbs } from "@/components/breadCrumbs";
+import { LoadingTable } from "@/components/loadingTable";
 import Sidebar from "@/components/sidebar";
 import { orderList } from "@/network/order.network";
 import { IOrder } from "@/types/order.type";
@@ -39,6 +40,9 @@ const Order: React.FC = (): JSX.Element => {
 
             {/* content */}
             <div className="md:col-span-4">
+                {
+                    isLoading ?
+                
                 <div className="shadow-lg overflow-x-auto">
                     <table className="w-full">
                         <thead className="text-left bg-gray-300">
@@ -51,7 +55,7 @@ const Order: React.FC = (): JSX.Element => {
                         </thead>
                         <tbody>
                             {
-                                isLoading ? 
+                                
                             
                                 data.map((item, i) => {
                                     return <tr key={i}>
@@ -61,18 +65,15 @@ const Order: React.FC = (): JSX.Element => {
                                     <td className="text-md px-6 py-4"><span className=" cursor-pointer text-red-500 material-symbols-outlined">delete</span></td>
                                 </tr>
                                 })
-                                    : <tr className="  my-3">
-                                        <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                       
-                                    </tr>
+                                    
 
                             }
                         </tbody>
                     </table>
                 </div>
+                : <>
+                <LoadingTable></LoadingTable>
+                </> }
             </div>
         </section>
     </>

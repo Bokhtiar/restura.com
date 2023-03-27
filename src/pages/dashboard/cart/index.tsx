@@ -1,4 +1,5 @@
 import { BreadCrumbs } from "@/components/breadCrumbs"
+import { LoadingTable } from "@/components/loadingTable"
 import Sidebar from "@/components/sidebar"
 import { Toastify } from "@/components/toastify"
 import { cartDecrement, cartDelete, cartIncrement, cartList } from "@/network/cart.network"
@@ -80,11 +81,13 @@ const Cart: React.FC = (): JSX.Element => {
             {/* content */}
 
             <div className="md:col-span-4">
-                <div className="flex items-center justify-between mb-2">
+                
+                {isLoading ? <><div className="flex items-center justify-between mb-2">
                     <span className="font-bold text-2xl">Cart list</span>
                     <Link className="btn btn-outline bg-primary text-white" href='/dashboard/order/create'>Order create</Link>
                 </div>
                 <div className="shadow-lg overflow-x-auto">
+                   
                     <table className="w-full">
                         <thead className="text-left bg-gray-300">
                             <tr className=" border border-solid">
@@ -97,14 +100,12 @@ const Cart: React.FC = (): JSX.Element => {
                         </thead>
                         <tbody>
                             {
-                                isLoading ?
-
                                     cart.map((item, i) => {
                                         return <tr key={i}>
                                             <td className="text-md px-6 py-4 flex items-center gap-2">
 
                                                 <img src={item.product[0]?.image} alt="" className="h-16 w-16" />
-                                                <span>{item.product[0]?.name}</span>
+                                                <Link href={`/menu/${item.product[0]._id}`}>{item.product[0]?.name}</Link>
                                             </td>
                                             <td className="text-md px-6 py-4">
 
@@ -124,41 +125,17 @@ const Cart: React.FC = (): JSX.Element => {
                                             <td className="text-md px-6 py-4">{item.product[0]?.price * item.quantity} Tk</td>
                                             <td className="text-md px-6 py-4"><span onClick={() => cartDestroy(item._id)} className=" cursor-pointer text-red-500 material-symbols-outlined">delete</span></td>
                                         </tr>
-                                    }) : <>
-
-                                        <tr className="  my-3">
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        </tr>
-
-                                        <tr className="  my-3">
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        </tr>
-
-                                        <tr className="  my-3">
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className="animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                            <td className=" animate-pulse h-2 py-6 w-8 bg-slate-200"></td>
-                                        </tr>
-
-                                    </>
-
-
+                                    }) 
                             }
                         </tbody>
                     </table>
-                </div>
-            </div>
+                    
+                </div></> : <>
+                            <LoadingTable></LoadingTable>
+                </>}
+                
 
+            </div>
         </section>
     </>
 }
