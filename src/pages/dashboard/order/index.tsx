@@ -54,7 +54,7 @@ const Order: React.FC = (): JSX.Element => {
                                 isLoading ? 
                             
                                 data.map((item, i) => {
-                                    return <tr>
+                                    return <tr key={i}>
                                     <td className="text-md px-6 py-4">{item.name}</td>
                                     <td className="text-md px-6 py-4">{item.email}</td>
                                     <td className="text-md px-6 py-4">{item.phone}</td>
